@@ -1,3 +1,4 @@
+import shutil
 import os
 import datetime
 import pytesseract
@@ -266,9 +267,28 @@ def extract_text_from_file(file_path):
             return ""       
         
     elif ext.endswith((".jpg", ".jpeg", ".png")):
-        return pytesseract.image_to_string(Image.open(file_path))
+        # 1. Copy the image to the Obsidian Attachments folder
+        img_filename = os.path.basename(file_path)
+        img_filepath = os.path.join(OBSIDIAN_ATTACHMENTS, img_filename)
         
-    return ""
+        try:
+            shutil.copy2(file_path, img_filepath)
+        except Exception as e:
+            print(f"Failed to copy image {img_filename}: {e}")
+            
+        # 2. Embed the image in Markdown format
+        extracted_content = f"\n![[{img_filename}]]\n\n"
+        
+        # 3. Run OCR to see if there is any searchable text inside the image
+        try:
+            ocr_text = pytesseract.image_to_string(Image.open(file_path))
+            if ocr_text.strip():
+                extracted_content += f"**Image Text:**\n{ocr_text}\n"
+        except Exception as e:
+            print(f"OCR failed on {img_filename}: {e}")
+            
+        # Returning this ensures text.strip() evaluates to True because of the Markdown link
+        return extracted_content
 
 
 def extract_all_documents(directory, output_dir):

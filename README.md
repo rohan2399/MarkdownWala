@@ -45,4 +45,5 @@ Command Line: Run python uploadermd.py. or  run_extractor.sh.
 Open the ObsidianVault/ExtractedDocs folder in Obsidian to view your perfectly formatted Markdown files and attachments!
 (You need to manually open Obsidian and open the folder there which would connect them by a .obsidian folder.
 
-More information on the way with Explaination coming soon
+## Workflow Diagram
+![Project Architecture](./obsidian_document_pipeline_flow.svg)

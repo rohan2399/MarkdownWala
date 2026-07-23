@@ -27,7 +27,7 @@ Before running the script, ensure you have the following installed on your syste
 
 **1. Clone the repository**
 ```bash
-git clone [https://github.com/rohan2399/MarkdownWala.git](https://github.com/rohan2399/MarkdownWala.git)
+git clone https://github.com/rohan2399/MarkdownWala.git
 cd MarkdownWala
 ```
 **1. Install dependencies** in a new environment

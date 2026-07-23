@@ -1,0 +1,20 @@
+# OCR and Image Processing
+pytesseract==0.3.10
+Pillow==10.2.0
+
+# PDF Processing
+PyMuPDF==1.23.21  # This is the 'fitz' import
+pdfplumber==0.10.3
+
+# Microsoft Office Processing
+docx2pdf==0.1.8
+python-pptx==0.6.23
+openpyxl==3.1.2   # Required for pandas to read Excel files
+
+# Data Handling & Environment
+pandas==2.2.0
+python-dotenv==1.0.1
+
+# Langchain
+langchain==0.1.5
+langchain-community==0.0.17
